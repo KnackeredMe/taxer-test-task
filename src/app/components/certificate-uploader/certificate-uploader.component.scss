@@ -1,2 +1,24 @@
 .certificate-uploader {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  border-radius: 0;
+  &__label {
+    color: black;
+    width: 320px;
+    margin-top: 70px;
+    margin-bottom: 20px;
+  }
+  &__button {
+    width: 400px;
+    padding: 10px;
+    font-size: inherit;
+    background-color: #E6E6E6;
+    border: 2px solid black;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }

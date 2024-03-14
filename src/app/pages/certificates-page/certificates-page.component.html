@@ -1,13 +1,19 @@
 <div class="certificates">
   <div class="certificates__container">
-    <button class="certificates__button-narrow" type="button" (click)="addCertificate = !addCertificate">{{addCertificate ? 'Назад' : 'Додати'}}</button>
-    <ul class="certificates__list">
-      <li class="certificates__list-item"></li>
+    <button class="certificates__button" type="button" (click)="addCertificate = !addCertificate">{{addCertificate ? 'Назад' : 'Додати'}}</button>
+    <ul *ngIf="!addCertificate && storageService.certificates.length > 0" class="certificates__list">
+      <li *ngFor="let certificate of storageService.certificates; index as i"
+          (click)="selected = i; addCertificate = false"
+          [class.selected]="selected === i"
+          class="certificates__list-item">
+        {{certificate.subject.typesAndValues | findByOid: ATTRIBUTES_OID.COMMON_NAME}}
+        <mat-icon *ngIf="selected === i">play_arrow</mat-icon>
+      </li>
     </ul>
-    <p class="certificates__text">Нема жодного сертифікату</p>
+    <p *ngIf="!addCertificate && storageService.certificates.length === 0" class="certificates__text">Нема жодного сертифікату</p>
   </div>
   <div class="certificates__container">
     <app-certificate-uploader *ngIf="addCertificate"></app-certificate-uploader>
-    <app-certificate-info *ngIf="!addCertificate"></app-certificate-info>
+    <app-certificate-info *ngIf="!addCertificate && selected != null" [certificate]="storageService.certificates[selected]"></app-certificate-info>
   </div>
 </div>
