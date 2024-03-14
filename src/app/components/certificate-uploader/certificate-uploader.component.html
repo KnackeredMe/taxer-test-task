@@ -1,0 +1,4 @@
+<ngx-dropzone #drop (change)="upload($event)" [disableClick]="true" class="certificate-uploader">
+  <ngx-dropzone-label class="certificate-uploader__label">Перетягніть файл сертифікату сюди або</ngx-dropzone-label>
+  <button class="certificate-uploader__button" type="button" (click)="drop.showFileSelector()">Виберіть через стандартний діалог</button>
+</ngx-dropzone>

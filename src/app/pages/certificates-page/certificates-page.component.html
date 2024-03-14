@@ -1,0 +1,13 @@
+<div class="certificates">
+  <div class="certificates__container">
+    <button class="certificates__button-narrow" type="button" (click)="addCertificate = !addCertificate">{{addCertificate ? 'Назад' : 'Додати'}}</button>
+    <ul class="certificates__list">
+      <li class="certificates__list-item"></li>
+    </ul>
+    <p class="certificates__text">Нема жодного сертифікату</p>
+  </div>
+  <div class="certificates__container">
+    <app-certificate-uploader *ngIf="addCertificate"></app-certificate-uploader>
+    <app-certificate-info *ngIf="!addCertificate"></app-certificate-info>
+  </div>
+</div>
