@@ -37,7 +37,7 @@ export class CertificatesPageComponent implements OnInit, OnDestroy{
 
   ngOnInit() {
     this.storageService.getFromLocalStorage();
-    this.storageService.savedSubject
+    this.storageService.saved$
         .pipe(takeUntil(this.destroy$))
         .subscribe({
           next: () => {

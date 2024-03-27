@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {CertificateJson} from "pkijs";
-import {Subject} from "rxjs";
+import {Observable, Subject} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,8 @@ import {Subject} from "rxjs";
 export class StorageService {
 
   public certificates: CertificateJson[] = [];
-  public savedSubject: Subject<void> = new Subject<void>();
+  private savedSubject: Subject<void> = new Subject<void>();
+  public saved$: Observable<void> = this.savedSubject.asObservable();
 
   constructor() { }
 
